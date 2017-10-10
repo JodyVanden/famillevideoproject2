@@ -1,5 +1,10 @@
 class CommentController < ApplicationController
 
+  def new
+    @video = Video.find(params[:id])
+    @content = Comment.new
+  end
+
   def create
     @video = Video.find(params[:id])
     @content = Comment.new(comment_params)
@@ -10,9 +15,10 @@ class CommentController < ApplicationController
       render video/show
     end
   end
+
   private
+
   def comment_params
     params.require(:comment).permit(:content)
-
   end
 end

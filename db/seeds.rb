@@ -87,27 +87,26 @@ video_attributes = [
     }
   }]
 
-marks_random = [0, 1, 2, 3, 4, 5].sample
+marks_random = [ 0, 1, 2, 3, 4, 5 ].sample
 
 comment_random = [ "super video", "j'aime bien, je trouve que ca va tres bien",
-  "top top top, je surkiff", "ah oui ca vaut le coup!"].sample
+  "top top top, je surkiff", "ah oui ca vaut le coup!"]
 
+video_attributes.each do |video_attributes|
+  puts video_attributes[:attributes][:name]
+  video = Video.new(video_attributes[:attributes])
+  sleep 0.8
+  video.save
+end
 
 users_attributes.each do |user_attributes|
   puts user_attributes[:attributes][:first_name]
   user = User.new(user_attributes[:attributes])
-    user.profile_picture_url = user_attributes[:profile_picture_url]
+  user.profile_picture_url = user_attributes[:profile_picture_url]
+  # comment = Comment.new(comment_random)
+  # mark = Mark.new(marks_random)
   sleep 0.8
+  # mark.save
+  # comment.save
   user.save
-
-  video_attributes.each do |video_attributes|
-    puts video_attributes[:attributes][:name]
-    video = Video.new(video_attributes[:attributes])
-    comment = Comment.new(comment_random,user_attributes[:attributes])
-    mark = Mark.new(marks_random)
-    sleep 0.8
-    video.save
-    comment.save
-    mark.save
-  end
 end
