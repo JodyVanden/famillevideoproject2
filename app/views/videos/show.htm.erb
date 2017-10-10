@@ -1,0 +1,15 @@
+<h1><%= @video.name %></h1>
+
+<p><%= url %></p>
+
+<h2> <%= pluralize @video.comment.size, "comment" %> </h2>
+
+<div id=comments>
+  <% if @video.comment.blank? %>
+  Soyez le premier a mettre un commentaire for <%= @video.name %>
+  <% else %>
+    <% @video.comment.each do |comment|
+      <%= render 'comment/show' %>
+    <% end %>
+  <% end %>
+</div>

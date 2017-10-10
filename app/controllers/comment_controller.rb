@@ -2,9 +2,9 @@ class CommentController < ApplicationController
 
   def create
     @video = Video.find(params[:id])
-    @comment = Comment.new(comment_params)
-    @comment.video = @video
-    if @comment.save
+    @content = Comment.new(comment_params)
+    @content.video = @video
+    if @content.save
       redirect_to video_path(@video)
     else
       render video/show
@@ -12,7 +12,7 @@ class CommentController < ApplicationController
   end
   private
   def comment_params
-    params.require(:comment).permit(:comment)
+    params.require(:comment).permit(:content)
 
   end
 end

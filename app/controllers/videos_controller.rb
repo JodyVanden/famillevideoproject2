@@ -6,5 +6,6 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.find (params[:id])
+    @content = Comment.new
   end
 end
