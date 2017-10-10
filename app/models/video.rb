@@ -1,3 +1,3 @@
 class Video < ApplicationRecord
-  has_many :marks, :comment
+  has_many :marks
 end
