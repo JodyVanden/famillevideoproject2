@@ -43,7 +43,7 @@ function makeNormal() {
  <%= youtube_video(video.youtube_id) %>
 
   <%= videojs_rails sources: { mp4: video.url, width:"400"} do %>
-    Please enable <b><%=video.url%></b> to see this content.
+    Please enable <b><%=video.youtube_id%></b> to see this content.
   <% end %>
 <% end %>
 </ul>
