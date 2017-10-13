@@ -1,14 +1,14 @@
 <h1><%= @video.name %></h1>
 
-<p><%= url %></p>
+<%= youtube_video(@video.youtube_id) %>
 
 <h2> <%= pluralize @video.comment.size, "comment" %> </h2>
 
 <div id=comments>
   <% if @video.comment.blank? %>
-  Soyez le premier a mettre un commentaire for <%= @video.name %>
+  Soyez le premier a mettre un commentaire for <%= @video.name %> <%= @video.youtube_id %> !
   <% else %>
-    <% @video.comment.each do |comment|
+    <% @video.comment.each do |comment| %>
       <%= render 'comment/show' %>
     <% end %>
   <% end %>

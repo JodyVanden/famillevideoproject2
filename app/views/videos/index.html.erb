@@ -1,7 +1,7 @@
 <ul>
 
 <% @videos.each do |video| %>
-  <li><%= video[:name]%> </li>
+  <li><%= link_to video[:name], video_path(video)%> </li>
  <%= youtube_video(video.youtube_id) %>
 <% end %>
 </ul>
