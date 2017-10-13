@@ -1,10 +1,11 @@
-<h1><%= @video.name %></h1>
-
-<%= youtube_video(@video.youtube_id) %>
+<div class = "videos">
+  <h1><%= @video.name %></h1>
+  <%= youtube_video(@video.youtube_id) %>
+</div>
 
 <h2> <%= pluralize @video.comment.size, "comment" %> </h2>
 
-<div id=comments>
+<div class = "comements">
   <% if @video.comment.blank? %>
   Soyez le premier a mettre un commentaire for <%= @video.name %> <%= @video.youtube_id %> !
   <% else %>
