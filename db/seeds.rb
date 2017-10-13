@@ -7,9 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+puts "deleted User"
 Video.destroy_all
+puts "deleted Video"
 # Comment.destroy_all
 Mark.destroy_all
+puts "deleted Mark"
 
 users_attributes = [
   {
@@ -71,19 +74,22 @@ video_attributes = [
   {
     attributes: {
       name: "video kitesurf",
-      url: "https://youtu.be/Tvv0lT-qXIM"
+      url: "https://youtu.be/Tvv0lT-qXIM",
+      description: LoremIpsum.random(paragraphs: 2)
     }
   },
   {
     attributes: {
       name: "video de model reduit",
-      url: "https://youtu.be/ArTcZ15aVYs"
+      url: "https://youtu.be/ArTcZ15aVYs",
+      description: LoremIpsum.random(paragraphs: 2)
     }
     },
   {
     attributes: {
       name: "video de drone",
-      url: "https://youtu.be/BnoUxPF3KuE"
+      url: "https://youtu.be/BnoUxPF3KuE",
+      description: LoremIpsum.random(paragraphs: 2)
     }
   }]
 

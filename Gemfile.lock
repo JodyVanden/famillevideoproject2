@@ -80,6 +80,7 @@ GEM
     loofah (2.1.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
+    lorem_ipsum_amet (0.6.2)
     mail (2.6.6)
       mime-types (>= 1.16, < 4)
     method_source (0.9.0)
@@ -170,7 +171,6 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
-    videojs_rails (4.12.15)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.5.1)
@@ -194,6 +194,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   listen (~> 3.0.5)
+  lorem_ipsum_amet
   pg
   pry-byebug
   pry-rails
@@ -205,11 +206,10 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier
-  videojs_rails
   web-console (>= 3.3.0)
 
 RUBY VERSION
    ruby 2.3.5p376
 
 BUNDLED WITH
-   1.15.4
+   1.16.0.pre.3

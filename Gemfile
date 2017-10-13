@@ -8,7 +8,7 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '5.1.4'
 gem 'redis'
-gem 'videojs_rails'
+gem 'lorem_ipsum_amet'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
