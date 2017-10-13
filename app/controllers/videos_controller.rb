@@ -1,7 +1,11 @@
 class VideosController < ApplicationController
 
   def index
-    @videos = Video.all
+    if current_user.allow_non_public?
+      @videos = Video.all
+    else
+      @videos = Video.where(is_public: true)
+    end
 
     @videos.each do |video|
       if video.youtube_id.nil?
