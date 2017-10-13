@@ -87,7 +87,7 @@ video_attributes = [
       url: "https://youtu.be/ArTcZ15aVYs",
       description: LoremIpsum.random(paragraphs: 2),
       is_public: true
-    }
+      }
     },
   {
     attributes: {
@@ -95,6 +95,7 @@ video_attributes = [
       url: "https://youtu.be/BnoUxPF3KuE",
       description: LoremIpsum.random(paragraphs: 2),
       is_public: true
+      }
     },
     {
     attributes: {
@@ -102,6 +103,7 @@ video_attributes = [
       url: "https://youtu.be/-Vbwnt6_6mU",
       description: LoremIpsum.random(paragraphs: 2),
       is_public: false
+      }
     },
     {
     attributes: {
@@ -109,6 +111,7 @@ video_attributes = [
       url: "https://youtu.be/MZcWd-9wx40",
       description: LoremIpsum.random(paragraphs: 2),
       is_public: true
+      }
     },
     {
     attributes: {
@@ -116,8 +119,9 @@ video_attributes = [
       url: "https://youtu.be/XakK81edKFA",
       description: LoremIpsum.random(paragraphs: 2),
       is_public: false
+      }
     }
-  }]
+  ]
 
 marks_random = [ 0, 1, 2, 3, 4, 5 ].sample
 
