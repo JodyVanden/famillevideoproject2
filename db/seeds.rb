@@ -22,6 +22,7 @@ users_attributes = [
       email: "jane@gmail.com",
       password: "123456",
       password_confirmation: "123456",
+      allow_non_public: true
     },
     profile_picture_url: "http://lorempixel.com/300/300/people/#{rand(40) + 1}/"
   },
@@ -33,6 +34,7 @@ users_attributes = [
       email: "john@gmail.com",
       password: "123456",
       password_confirmation: "123456",
+      allow_non_public: false
       },
     profile_picture_url: "http://lorempixel.com/300/300/people/#{rand(40) + 1}/"
   },
@@ -75,21 +77,45 @@ video_attributes = [
     attributes: {
       name: "video kitesurf",
       url: "https://youtu.be/Tvv0lT-qXIM",
-      description: LoremIpsum.random(paragraphs: 2)
+      description: LoremIpsum.random(paragraphs: 2),
+      is_public: true
     }
   },
   {
     attributes: {
       name: "video de model reduit",
       url: "https://youtu.be/ArTcZ15aVYs",
-      description: LoremIpsum.random(paragraphs: 2)
+      description: LoremIpsum.random(paragraphs: 2),
+      is_public: true
     }
     },
   {
     attributes: {
       name: "video de drone",
       url: "https://youtu.be/BnoUxPF3KuE",
-      description: LoremIpsum.random(paragraphs: 2)
+      description: LoremIpsum.random(paragraphs: 2),
+      is_public: true
+    },
+    {
+    attributes: {
+      name: "Paramotor emergency landing",
+      url: "https://youtu.be/-Vbwnt6_6mU",
+      description: LoremIpsum.random(paragraphs: 2),
+      is_public: false
+    },
+    {
+    attributes: {
+      name: "Kiteboarding is Awesome 2017 #5",
+      url: "https://youtu.be/MZcWd-9wx40",
+      description: LoremIpsum.random(paragraphs: 2),
+      is_public: true
+    },
+    {
+    attributes: {
+      name: "video Crawl through a B-29 Superfortress IN FLIGHT! + Real-Time procedures / ATC - Oshkosh AirVenture!",
+      url: "https://youtu.be/XakK81edKFA",
+      description: LoremIpsum.random(paragraphs: 2),
+      is_public: false
     }
   }]
 

@@ -1,11 +1,26 @@
 <div class = "videos">
   <h1><%= @video.name %></h1>
   <%= youtube_video(@video.youtube_id) %>
+  <!-- <p> <%= @video.description.truncate_words(10, omission: '... (continued)') %></p> -->
+  <<div>
+  <% if @video.description.length > 250 %>
+    <%= truncate(@video.description, length: 250) %>
+    <%= link_to 'Read more', '', class: "read-more-#{@video.id}" %>
+    <script>
+      $('.read-more-<%= @video.id %>').on('click', function(e) {
+        e.preventDefault()
+        $(this).parent().html('<%= escape_javascript @video.description %>')
+      })
+    </script>
+  <% else %>
+    <%= @video.description %>
+  <% end %>
+<div>
 </div>
 
 <h2> <%= pluralize @video.comment.size, "comment" %> </h2>
 
-<div class = "comements">
+<div class = "comments">
   <% if @video.comment.blank? %>
   Soyez le premier a mettre un commentaire for <%= @video.name %> <%= @video.youtube_id %> !
   <% else %>
