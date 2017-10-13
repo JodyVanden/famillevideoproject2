@@ -1,0 +1,49 @@
+<ul>
+
+<% @videos.each do |video| %>
+  <li><%= video[:name]%> (<%=  %>)</li>
+
+<!--   <div style="text-align:center">
+  <button onclick="playPause()">Play/Pause</button>
+  <button onclick="makeBig()">Big</button>
+  <button onclick="makeSmall()">Small</button>
+  <button onclick="makeNormal()">Normal</button>
+  <br><br>
+  <video id="video1" width="420">
+    <source src= video.url type="video/mp4">
+   <source src="mov_bbb.ogg" type="video/ogg">
+    Your browser does not support HTML5 video.
+  </video>
+</div>
+
+<script>
+var myVideo = document.getElementById("video1");
+
+function playPause() {
+    if (myVideo.paused)
+        myVideo.play();
+    else
+        myVideo.pause();
+}
+
+function makeBig() {
+    myVideo.width = 560;
+}
+
+function makeSmall() {
+    myVideo.width = 320;
+}
+
+function makeNormal() {
+    myVideo.width = 420;
+}
+ </script>-->
+<!--  <%= video_tag video.url , width: "640", height: "480", :controls => true, :autobuffer => true %>
+ -->
+ <%= youtube_video(video.youtube_id) %>
+
+  <%= videojs_rails sources: { mp4: video.url, width:"400"} do %>
+    Please enable <b><%=video.url%></b> to see this content.
+  <% end %>
+<% end %>
+</ul>
