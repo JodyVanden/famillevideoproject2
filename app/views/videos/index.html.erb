@@ -7,8 +7,7 @@
           <div class="col-md-4 col-sm-6">
             <li><%= link_to video[:name], video_path(video)%> </li>
             <%= youtube_video(video.youtube_id) %>
-            <p> <%= video.description.truncate_words(10, omission: '... (continued)') %></p>
-            <!-- 'And they found that many people were sleeping better.'.truncate_words(5, omission: '... (continued)') -->
+            <p> <%= link_to video.description.truncate_words(10, omission: '...'), video_path(video)  %></p>
           </div>
         <% end %>
       </div>
