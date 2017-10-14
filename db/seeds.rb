@@ -75,6 +75,15 @@ users_attributes = [
 video_attributes = [
   {
     attributes: {
+      name: "Ambleny Papy Michel et Mamie dans le jardin",
+      url: "https://youtu.be/KgVbcQrGefE",
+      description: "Travail dans le jardin d'Ambleny avec Michel, Jean Marie et Papy. Debroussaillage, \
+      feu pour bruler les branches mortes, fleurs de Mamie",
+      is_public: true
+    }
+  },
+  {
+    attributes: {
       name: "video kitesurf",
       url: "https://youtu.be/Tvv0lT-qXIM",
       description: LoremIpsum.random(paragraphs: 2),
