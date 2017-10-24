@@ -1,16 +1,18 @@
-<ul>
-  <div class="container">
-    <div class="row">
-      <div class = "videos" >
+<div class="wrapper">
+  <ul>
+    <div class="container">
+      <div class="row">
+        <div class = "videos" >
 
-        <% @videos.each do |video| %>
-          <div class="col-md-4 col-sm-6">
-            <li><%= link_to video[:name], video_path(video)%> </li>
-            <%= youtube_video(video.youtube_id) %>
-            <p> <%= link_to video.description.truncate_words(10, omission: '...'), video_path(video)  %></p>
-          </div>
-        <% end %>
-      </div>
-    </class>
-  </div>
-</ul>
+          <% @videos.each do |video| %>
+            <div class="col-md-4 col-sm-6">
+              <li><%= link_to video[:name].truncate_words(5, omission: '...'), video_path(video)%> </li>
+              <%= youtube_video(video.youtube_id) %>
+              <p> <%= link_to video.description.truncate_words(10, omission: '...'), video_path(video)  %></p>
+            </div>
+          <% end %>
+        </div>
+      </class>
+    </div>
+  </ul>
+</div>
