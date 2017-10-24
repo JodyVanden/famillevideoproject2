@@ -1,18 +1,24 @@
-<div class="wrapper">
-  <ul>
-    <div class="container">
-      <div class="row">
-        <div class = "videos" >
+<div class="banner">
+  <div class="banner-content">
+    <h1>Films de famille: <strong>en super 8</strong></h1>
+    <p>scannés image par image et retravaillés</p>
+  </div>
+</div>
 
-          <% @videos.each do |video| %>
-            <div class="col-md-4 col-sm-6">
-              <li><%= link_to video[:name].truncate_words(5, omission: '...'), video_path(video)%> </li>
-              <%= youtube_video(video.youtube_id) %>
-              <p> <%= link_to video.description.truncate_words(10, omission: '...'), video_path(video)  %></p>
-            </div>
-          <% end %>
-        </div>
-      </class>
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="videos" >
+        <% @videos.each do |video| %>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <%= link_to video_path(video) do %>
+                <li><%= video[:name].truncate(30, omission: '...')%> </li>
+                <%= youtube_video(video.youtube_id) %>
+                <p> <%= video.description.truncate_words(10, omission: '...') %></p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </ul>
+  </div>
 </div>

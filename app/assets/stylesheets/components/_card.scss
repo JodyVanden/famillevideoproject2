@@ -1,15 +1,26 @@
 /* card infos for videos */
 .wrapper{
-  background-color: lightgrey;
+  background-color: light-gray;
 }
 
 .container{
   list-style: none;
-  color: black;
+  color: gray;
   text-decoration: none;
+}
+
+.videos{
+  padding: 20px;
+  border: 10px;
 
 }
-.videos{
-  color: black;
+.videos a {
+  color: gray;
   text-decoration: none;
+}
+
+
+
+.videos a:hover{
+  color:black;
 }
