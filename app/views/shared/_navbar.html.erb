@@ -23,8 +23,8 @@
           <%= image_tag src = "https://avatars1.githubusercontent.com/u/25408202?s=40&u=19397960941285814fd1206d2a616e0c21caf0fa&v=4", class: "avatar dropdown-toggle", id: "navbar-video-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-video-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+              <%= link_to edit_user_registration_path do %>
+                <i class="fa fa-user"></i> <%= t(".reset password", default: "reset password") %>
               <% end %>
             </li>
             <li>
