@@ -18,6 +18,17 @@
 <div>
 </div>
 
+<div class="admin">
+  <% if current_user.email == "jody.vanden@gmail.com" %>
+  <%= link_to "edit", edit_video_path(@video) %>
+  <%= link_to "delete", video_path(@video), method: :delete,
+      data: { confirm: "Are you sure?" } %>
+  <%end%>
+
+
+</div>
+
+
 <h2> <%= pluralize @video.comment.size, "comment" %> </h2>
 
 <div class = "comments">

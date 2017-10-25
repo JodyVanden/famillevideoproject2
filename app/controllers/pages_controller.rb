@@ -3,4 +3,7 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def not_allowed
+  end
 end

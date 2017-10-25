@@ -70,7 +70,18 @@ users_attributes = [
       password_confirmation: "123456",
       },
     profile_picture_url: "http://lorempixel.com/300/300/people/#{rand(40) + 1}/"
-  }]
+  },
+  {
+    attributes: {
+      first_name: "Jody",
+      last_name: "Vanden",
+      email: "jody.vanden@gmail.com",
+      password: "123456",
+      password_confirmation: "123456",
+      allow_non_public: true
+    },
+    profile_picture_url: "http://lorempixel.com/300/300/people/#{rand(40) + 1}/"
+    }]
 
 video_attributes = [
   {
