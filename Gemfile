@@ -12,6 +12,7 @@ gem 'lorem_ipsum_amet'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
 gem 'wgif'
+gem 'video_info', '~> 2.7'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'

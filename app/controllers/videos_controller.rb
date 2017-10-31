@@ -9,9 +9,11 @@ class VideosController < ApplicationController
 
     @videos.each do |video|
       if video.youtube_id.nil?
-        pattern = /(?:https\:\/\/youtu\.be)\/(?<youtube_id>.+)/
-        match_data = video.url.match(pattern)
-        video.youtube_id = match_data[:youtube_id]
+         # pattern = /(?:https\:\/\/youtu\.be)\/(?<youtube_id>.+)/
+        # match_data = @video.url.match(pattern)
+        # @video.youtube_id = match_data[:youtube_id]
+        video_youtube_info = VideoInfo.new(@video.url)
+        @video.youtube_id = video_youtube_info.video_id
       end
         video.save
     end
@@ -28,13 +30,31 @@ class VideosController < ApplicationController
 
 
     if @video.youtube_id.nil?
-        pattern = /(?:https\:\/\/youtu\.be)\/(?<youtube_id>.+)/
-        match_data = @video.url.match(pattern)
-        @video.youtube_id = match_data[:youtube_id]
+        # pattern = /(?:https\:\/\/youtu\.be)\/(?<youtube_id>.+)/
+        # match_data = @video.url.match(pattern)
+        # @video.youtube_id = match_data[:youtube_id]
+        video_youtube_info = VideoInfo.new(@video.url)
+        @video.youtube_id = video_youtube_info.video_id
         @video.save
       end
     @content = Comment.new
     @mark = Mark.new
+  end
+
+  def new
+    @video = Video.new
+
+  end
+
+  def create
+    @video = Video.new(video_params)
+    video_youtube_info = VideoInfo.new(@video.url)
+    @video.youtube_id = video_youtube_info.video_id
+
+    @video.name = video_youtube_info.title
+    @video.description = video_youtube_info.description
+    @video.save
+    redirect_to video_path(@video)
   end
 
   def edit

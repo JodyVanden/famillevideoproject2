@@ -16,6 +16,9 @@
                 <%= youtube_video(video.youtube_id) %>
                 <p> <%= video.description.truncate_words(10, omission: '...') %></p>
             <% end %>
+            <% if current_user.email == 'jody.vanden@gmail.com' %>
+              <p> <%= link_to 'add a video', new_video_path %></p>
+              <%end%>
           </div>
         <% end %>
       </div>
