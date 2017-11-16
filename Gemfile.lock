@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://railscamp.local/rubygems/
   specs:
     actioncable (5.1.4)
       actionpack (= 5.1.4)
@@ -270,5 +270,8 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   wgif
 
+RUBY VERSION
+   ruby 2.3.5p376
+
 BUNDLED WITH
-   1.16.0.pre.3
+   1.16.0
