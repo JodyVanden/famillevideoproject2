@@ -8,18 +8,18 @@
       <!-- <p> <%= @video.description.truncate_words(10, omission: '... (continued)') %></p> -->
       <% if @video.description.length > 250 %>
         <%= truncate(@video.description, length: 250) %>
-        <%= link_to 'Read more', '', class: "read-more-#{@video.id}" %>
-        <script>
+        <%= link_to_function 'Read more', "$(this).parent().html('#{escape_javascript  @video.description}')" %>
+<!--         <%= link_to 'Read more', '', class: "read-more-#{@video.id}" %>
+ -->        <!-- <script>
           $('.read-more-<%= @video.id %>').on('click', function(e) {
             e.preventDefault()
             $(this).parent().html('<%= escape_javascript @video.description %>')
           })
-        </script>
+        </script> -->
       <% else %>
         <%= @video.description %>
       <% end %>
     </div>
-
 
     <div class="admin">
       <% if current_user.email == "jody.vanden@gmail.com" %>
