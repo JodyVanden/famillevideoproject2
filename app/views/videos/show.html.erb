@@ -1,10 +1,10 @@
 <div class="wrapper">
   <div class = "show-videos">
-    <div class="show-video-card">
+    <div class="show-video-card auto-resizable-iframe ">
       <h1><%= @video.name %></h1>
       <%= youtube_video(@video.youtube_id) %>
     </div>
-    <div class="show-description">
+    <div class="show-description auto-resizable-iframe ">
       <!-- <p> <%= @video.description.truncate_words(10, omission: '... (continued)') %></p> -->
       <% if @video.description.length > 250 %>
         <%= truncate(@video.description, length: 250) %>
@@ -32,7 +32,7 @@
     </div>
 
 
-    <h2> <%= pluralize @video.comment.size, "comment" %> </h2>
+    <!-- <h2> <%= pluralize @video.comment.size, "comment" %> </h2>
 
     <div class = "comments">
       <% if @video.comment.blank? %>
@@ -42,6 +42,6 @@
           <%= render 'comment/show' %>
         <% end %>
       <% end %>
-    </div>
+    </div> -->
   </div>
 </div>
