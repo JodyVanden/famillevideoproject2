@@ -8,20 +8,63 @@
 <div class="wrapper">
   <div class="container">
     <div class="row">
-      <div class="videos" >
+      <div class="cards-videos" >
         <% @videos.each do |video| %>
           <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-            <%= link_to video_path(video) do %>
-                <li><%= video[:name].truncate(30, omission: '...')%> </li>
-                <%= youtube_video(video.youtube_id) %>
-                <p> <%= video.description.truncate_words(10, omission: '...') %></p>
-            <% end %>
+            <div class="card-video" >
+              <%= link_to video_path(video) do %>
+                  <li><%= video[:name].truncate(30, omission: '...')%> </li>
+                  <%= youtube_video(video.youtube_id) %>
+                  <p> <%= video.description.truncate_words(10, omission: '...') %></p>
+              <% end %>
+            </div>
           </div>
         <% end %>
-      <% if current_user.email == 'jody.vanden@gmail.com' %>
-              <p> <%= link_to '<i class="fa fa-plus-circle text-center" aria-hidden="true"></i>'.html_safe, new_video_path %></p>
-              <%end%>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center">
+          <div class="card-add-video" >
+            <% if current_user.email == 'jody.vanden@gmail.com' %>
+              <p> <%= link_to '<i class="fa fa-plus-circle add-video" aria-hidden="true"></i> <p>add a video</p>'.html_safe, new_video_path %></p>
+            <%end%>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

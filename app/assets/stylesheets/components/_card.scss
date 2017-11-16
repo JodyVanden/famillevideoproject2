@@ -9,18 +9,25 @@
   text-decoration: none;
 }
 
-.videos{
+.cards-videos{
+  display: table;
+  width: 100%;
   padding: 20px;
   border: 10px;
 
 }
-.videos a {
+.cards-videos a {
   color: gray;
   text-decoration: none;
 }
 
-
-
-.videos a:hover{
+.card-video a:hover{
   color:black;
+}
+
+.card-add-video{
+  display: table;
+  width: 100%;
+  height: 281px;
+  padding: 50px;
 }

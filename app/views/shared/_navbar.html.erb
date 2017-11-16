@@ -5,7 +5,9 @@
   <% end %>
 
   <div class="navbar-video-title">
-    <%= link_to '<h1 class: "navbar-video-brand">Video de Famille</h1>'.html_safe, root_path %>
+    <%= link_to root_path do %>
+      <h1>Video de Famille</h1>
+      <%  end %>
   </div>
 
   <!-- Right Navigation -->
