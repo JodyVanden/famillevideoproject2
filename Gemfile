@@ -1,5 +1,4 @@
-# source 'https://rubygems.org'
-source "http://railscamp.local/rubygems"
+source 'https://rubygems.org'
 # bundle config --global mirror.https://rubygems.org http://gems.railscamp.local
 ruby '2.3.5'
 
