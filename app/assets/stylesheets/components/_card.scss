@@ -10,24 +10,50 @@
 }
 
 .cards-videos{
-  display: table;
-  width: 100%;
+  // display: table;
+  // width: 100%;
   padding: 20px;
   border: 10px;
-
 }
+
 .cards-videos a {
-  color: gray;
+  color: white;
   text-decoration: none;
 }
 
-.card-video a:hover{
-  color:black;
+.card-video{
+  position: relative;
+  background-size: cover;
+  border-radius: 20px;
+  height: 250px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  .name-video{
+    position:absolute;
+    top:5px;
+    left:10px;
+  }
+  .description-video{
+    position:absolute;
+    bottom:0px;
+    left:10px;
+  }
+}
+
+
+.card-video hover{
+  color:grey;
 }
 
 .card-add-video{
-  display: table;
-  width: 100%;
-  height: 281px;
+  // display: table;
+  // width: 100%;
+  // height: 281px;
   padding: 50px;
+
+  a{  color: grey;
+
+  }
 }
+
+

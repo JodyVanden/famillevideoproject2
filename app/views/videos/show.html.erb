@@ -1,42 +1,47 @@
-<div class = "videos">
-  <h1><%= @video.name %></h1>
-  <%= youtube_video(@video.youtube_id) %>
-  <!-- <p> <%= @video.description.truncate_words(10, omission: '... (continued)') %></p> -->
-  <<div>
-  <% if @video.description.length > 250 %>
-    <%= truncate(@video.description, length: 250) %>
-    <%= link_to 'Read more', '', class: "read-more-#{@video.id}" %>
-    <script>
-      $('.read-more-<%= @video.id %>').on('click', function(e) {
-        e.preventDefault()
-        $(this).parent().html('<%= escape_javascript @video.description %>')
-      })
-    </script>
-  <% else %>
-    <%= @video.description %>
-  <% end %>
-<div>
-</div>
-
-<div class="admin">
-  <% if current_user.email == "jody.vanden@gmail.com" %>
-  <%= link_to "edit", edit_video_path(@video) %>
-  <%= link_to "delete", video_path(@video), method: :delete,
-      data: { confirm: "Are you sure?" } %>
-  <%end%>
+<div class="wrapper">
+  <div class = "show-videos">
+    <div class="show-video-card">
+      <h1><%= @video.name %></h1>
+      <%= youtube_video(@video.youtube_id) %>
+    </div>
+    <div class="show-description">
+      <!-- <p> <%= @video.description.truncate_words(10, omission: '... (continued)') %></p> -->
+      <% if @video.description.length > 250 %>
+        <%= truncate(@video.description, length: 250) %>
+        <%= link_to 'Read more', '', class: "read-more-#{@video.id}" %>
+        <script>
+          $('.read-more-<%= @video.id %>').on('click', function(e) {
+            e.preventDefault()
+            $(this).parent().html('<%= escape_javascript @video.description %>')
+          })
+        </script>
+      <% else %>
+        <%= @video.description %>
+      <% end %>
+    </div>
 
 
-</div>
+    <div class="admin">
+      <% if current_user.email == "jody.vanden@gmail.com" %>
+      <%= link_to "edit", edit_video_path(@video) %>
+      <%= link_to "delete", video_path(@video), method: :delete,
+          data: { confirm: "Are you sure?" } %>
+      <%end%>
 
 
-<h2> <%= pluralize @video.comment.size, "comment" %> </h2>
+    </div>
 
-<div class = "comments">
-  <% if @video.comment.blank? %>
-  Soyez le premier a mettre un commentaire for <%= @video.name %> <%= @video.youtube_id %> !
-  <% else %>
-    <% @video.comment.each do |comment| %>
-      <%= render 'comment/show' %>
-    <% end %>
-  <% end %>
+
+    <h2> <%= pluralize @video.comment.size, "comment" %> </h2>
+
+    <div class = "comments">
+      <% if @video.comment.blank? %>
+      Soyez le premier a mettre un commentaire for <%= @video.name %> <%= @video.youtube_id %> !
+      <% else %>
+        <% @video.comment.each do |comment| %>
+          <%= render 'comment/show' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
