@@ -7,7 +7,7 @@ class CommentController < ApplicationController
 
   def create
     @video = Video.find(params[:id])
-    @comment = Comment.new(comment_params)
+    @comment = Comment.new(comment_params,@video)
     @comment.user = current_user
     @comment.video = @video
     if @comment.save

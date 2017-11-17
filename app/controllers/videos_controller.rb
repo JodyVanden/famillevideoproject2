@@ -25,21 +25,24 @@ class VideosController < ApplicationController
       if !@video.is_public? && current_user.allow_non_public?
         @video = Video.find(params[:id])
       elsif @video.is_public?
-
       else redirect_to not_allowed_path
     end
 
-
     if @video.youtube_id.nil?
-        # pattern = /(?:https\:\/\/youtu\.be)\/(?<youtube_id>.+)/
-        # match_data = @video.url.match(pattern)
-        # @video.youtube_id = match_data[:youtube_id]
-        video_youtube_info = VideoInfo.new(@video.url)
-        @video.youtube_id = video_youtube_info.video_id
-        @video.save
-      end
-    @comment = Comment.new
-    @mark = Mark.new
+      # pattern = /(?:https\:\/\/youtu\.be)\/(?<youtube_id>.+)/
+      # match_data = @video.url.match(pattern)
+      # @video.youtube_id = match_data[:youtube_id]
+      video_youtube_info = VideoInfo.new(@video.url)
+      @video.youtube_id = video_youtube_info.video_id
+      @video.save
+    end
+
+    if @video.comment.nil?
+      @comment = Comment.new(@video)
+    else @comment = @video.comment
+    end
+    # if @video.mark.nil?
+    #   @mark = Mark.new
   end
 
   def new
