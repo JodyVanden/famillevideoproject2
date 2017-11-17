@@ -21,7 +21,7 @@
       <% end %>
     </div>
 
-    <div class="admin">
+    <div class="admin auto-resizable-iframe">
       <% if current_user.email == "jody.vanden@gmail.com" %>
       <%= link_to "edit", edit_video_path(@video) %>
       <%= link_to "delete", video_path(@video), method: :delete,
@@ -32,16 +32,23 @@
     </div>
 
 
-    <!-- <h2> <%= pluralize @video.comment.size, "comment" %> </h2>
 
-    <div class = "comments">
+    <div class = "comments auto-resizable-iframe">
+    <h2> <%= pluralize @video.comment.size, "comment" %> </h2>
       <% if @video.comment.blank? %>
-      Soyez le premier a mettre un commentaire for <%= @video.name %> <%= @video.youtube_id %> !
+      <p>Soyez le premier a mettre un commentaire for <%= @video.name %>!</p>
       <% else %>
         <% @video.comment.each do |comment| %>
           <%= render 'comment/show' %>
         <% end %>
       <% end %>
-    </div> -->
+      <%= simple_form_for @video do |f| %>
+        <!-- Change default label -->
+        <%= f.input :comment, as: :text, placeholder: 'Entrez un commentaire', error: 'commentaire necessaire pour envoyer' %>
+        <!-- Add placeholder -->
+        <%= f.input :mark, collection: 1..5, prompt: "Nb of stars", selected: 3 %>
+        <%= f.submit %>
+      <% end %>
+    </div>
   </div>
 </div>
