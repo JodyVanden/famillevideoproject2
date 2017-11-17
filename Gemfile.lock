@@ -261,6 +261,7 @@ DEPENDENCIES
   puma
   rails (= 5.1.4)
   redis
+  rmagick
   sass-rails
   simple_form
   spring

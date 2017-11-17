@@ -12,6 +12,7 @@ gem 'redis'
 gem 'lorem_ipsum_amet'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
+gem 'rmagick'
 gem 'wgif'
 gem 'video_info', '~> 2.7'
 
