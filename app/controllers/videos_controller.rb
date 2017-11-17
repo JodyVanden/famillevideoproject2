@@ -38,7 +38,7 @@ class VideosController < ApplicationController
         @video.youtube_id = video_youtube_info.video_id
         @video.save
       end
-    @content = Comment.new
+    @comment = Comment.new
     @mark = Mark.new
   end
 
