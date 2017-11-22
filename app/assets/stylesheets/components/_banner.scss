@@ -11,6 +11,16 @@
   color: white;
 }
 
+.banner-content{
+  padding: 50px;
+  p {
+    font-size: calc(18px + 2vw);
+  };
+  h1{
+    font-size: calc(20px + 5vw);
+  }
+}
+
 // .banner-content h1{
 //     background-color: white;
 // }
