@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     if @comment.save
      redirect_to video_path(@video)
     else
-      render 'video/show'
+      render 'videos/show'
     end
   end
 
