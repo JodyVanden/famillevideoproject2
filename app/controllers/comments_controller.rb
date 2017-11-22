@@ -11,9 +11,15 @@ class CommentsController < ApplicationController
     @comment.video_id = @video.id
     @comment.user_id = current_user.id
     if @comment.save
-     redirect_to video_path(@video)
+      respond_to do |format|
+        format.html { redirect_to video_path(@video) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      render 'videos/show'
+      respond_to do |format|
+        format.html { render 'videos/show' }
+        format.js  # <-- idem
+      end
     end
   end
 

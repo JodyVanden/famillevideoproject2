@@ -1,10 +1,10 @@
 // Here you generate *JavaScript* that would be executed in the browser
 
-// const newCommentForm = document.getElementById('new_comment');
-// <% if @comment.errors.any? %>
-//   newCommentForm.innerHTML = "<%= j render 'comments/form', video: @video, comment: @comment %>";
-// <% else %>
-//   const comments = document.getElementById('comments');
-//   comments.insertAdjacentHTML("beforeend", "<%= j render 'videos/show', comment: @comment %>");
-//   newCommentForm.innerHTML = "<%= j render 'comments/form', video: @video, comment: Comment.new %>";
-// <% end %>
+const newCommentForm = document.getElementById('new_comment');
+<% if @comment.errors.any? %>
+  newCommentForm.innerHTML = "<%= j render 'comments/form', video: @video, comment: @comment %>";
+<% else %>
+  const comments = document.getElementById('comments');
+  comments.insertAdjacentHTML("beforeend", "<%= j render 'comments/show', comment: @comment.content, user_id: @comment.user_id %>");
+  newCommentForm.innerHTML = "<%= j render 'comments/form', video: @video, comment: Comment.new %>";
+<% end %>
