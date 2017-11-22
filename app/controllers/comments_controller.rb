@@ -15,14 +15,7 @@ class CommentsController < ApplicationController
     else
       render 'video/show'
     end
-
   end
-
-  def index
-    @video = Video.find(params[:video_id])
-    @comment = video.comments
-  end
-
 
   private
 

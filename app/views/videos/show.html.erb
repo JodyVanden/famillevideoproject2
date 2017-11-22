@@ -34,21 +34,16 @@
 
 
     <div class = "comments auto-resizable-iframe">
-    <h2> <%= pluralize @video.comment.size, "comment" %> </h2>
-      <% if @video.comment.blank? %>
+    <h2> <%= pluralize @video.comments.size, "comment" %> </h2>
+      <% if @video.comments.blank? %>
       <p>Soyez le premier a mettre un commentaire for <%= @video.name %>!</p>
       <% else %>
-        <% @video.comment.each do |comment| %>
-          <%= render 'comment/show' %>
+        <% @video.comments.each do |comment| %>
+          <%= render 'comments/show', comment: comment.content, user_name: comment.user_id %>
         <% end %>
       <% end %>
-      <%= simple_form_for @video do |f| %>
-        <!-- Change default label -->
-        <%= f.input :comment, as: :text, placeholder: 'Entrez un commentaire', error: 'commentaire necessaire pour envoyer' %>
-        <!-- Add placeholder -->
-       <!--  <%= f.input :mark, collection: 1..5, prompt: "Nb of stars", selected: 3 %> -->
-        <%= f.submit %>
-      <% end %>
+
+      <%= render 'comments/form', video: @video, comment: @comment %>
     </div>
   </div>
 </div>
