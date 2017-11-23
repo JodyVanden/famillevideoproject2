@@ -1,2 +1,10 @@
-<p>Poster par <%= User.find(user_id).first_name %></p>
-<p><%= comment %></p>
+<div class="comments-name">
+  <p>Poster par <%= User.find(user_id).first_name %>
+    <% if current_user.id == user_id %>
+        <%= link_to "supprimer", video_comment_path(video,comment_id), method: :delete, data: { confirm: "Êtes-vous sûr?" } %>
+    <% end %>
+  </p>
+  <div class="comments-content">
+    <p><%= comment %></p>
+  </div>
+</div>

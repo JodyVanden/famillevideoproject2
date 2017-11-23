@@ -1,6 +1,6 @@
 <%= simple_form_for([video, comment], remote: true) do |f| %>
-  <%= f.input :content, as: :text %>
-  <%= f.button :submit %>
+  <%= f.input :content,label: 'Commentaire', as: :text %>
+  <%= f.button :submit, 'Ajouter un commentaire' %>
 <% end %>
 
 
