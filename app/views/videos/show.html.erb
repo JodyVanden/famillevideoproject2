@@ -27,11 +27,7 @@
       <%= link_to "delete", video_path(@video), method: :delete,
           data: { confirm: "Are you sure?" } %>
       <%end%>
-
-
     </div>
-
-
 
     <div id = "comments" class = "comments auto-resizable-iframe">
     <h2> <%= pluralize @video.comments.size, "comment" %> </h2>
