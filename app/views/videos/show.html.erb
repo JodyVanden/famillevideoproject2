@@ -36,7 +36,7 @@
           <p>Soyez le premier à mettre un commentaire for <%= @video.name %>!</p>
         <% else %>
           <% @video.comments.each do |comment| %>
-            <%= render 'comments/show', comment_id: comment.id, comment: comment.content, user_id: comment.user_id, video: @video %>
+            <%= render 'comments/show', comment_id: comment.id, comment: comment, user_id: comment.user_id, video: @video %>
           <% end %>
         <% end %>
       </div>

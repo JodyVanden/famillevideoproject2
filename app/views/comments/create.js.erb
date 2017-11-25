@@ -5,6 +5,6 @@ const newCommentForm = document.getElementById('new_comment');
   newCommentForm.innerHTML = "<%= j render 'comments/form', video: @video, comment: @comment %>";
 <% else %>
   const comments = document.getElementById('comments');
-  comments.insertAdjacentHTML("beforeend", "<%= j render 'comments/show', comment: @comment.content, user_id: @comment.user_id %>");
+  comments.insertAdjacentHTML("beforeend", "<%= j render 'comments/show', comment: @comment, user_id: @comment.user_id %>");
   newCommentForm.innerHTML = "<%= j render 'comments/form', video: @video, comment: Comment.new %>";
 <% end %>
