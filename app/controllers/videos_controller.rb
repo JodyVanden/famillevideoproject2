@@ -6,18 +6,7 @@ class VideosController < ApplicationController
     else
       @videos = Video.where(is_public: true)
     end
-
-    @videos.each do |video|
-      if video.youtube_id.nil?
-         # pattern = /(?:https\:\/\/youtu\.be)\/(?<youtube_id>.+)/
-        # match_data = @video.url.match(pattern)
-        # @video.youtube_id = match_data[:youtube_id]
-        video_youtube_info = VideoInfo.new(video.url)
-        video.youtube_id = video_youtube_info.video_id
-        video.image_url = video_youtube_info.thumbnail_large
-      end
-        video.save
-    end
+    video_info_nil
   end
 
   def show
@@ -29,16 +18,7 @@ class VideosController < ApplicationController
     elsif @video.is_public?
     else redirect_to not_allowed_path
     end
-
-    if @video.youtube_id.nil?
-      # pattern = /(?:https\:\/\/youtu\.be)\/(?<youtube_id>.+)/
-      # match_data = @video.url.match(pattern)
-      # @video.youtube_id = match_data[:youtube_id]
-      video_youtube_info = VideoInfo.new(@video.url)
-      @video.youtube_id = video_youtube_info.video_id
-      @video.save
-    end
-
+    video_info_nil_show
   end
 
   def new
@@ -77,6 +57,31 @@ class VideosController < ApplicationController
 
   def video_params
     params.require(:video).permit(:name, :url, :description, :is_public)
+  end
+
+  def video_info_nil_index
+    @videos.each do |video|
+      if video.youtube_id.nil?
+         # pattern = /(?:https\:\/\/youtu\.be)\/(?<youtube_id>.+)/
+        # match_data = @video.url.match(pattern)
+        # @video.youtube_id = match_data[:youtube_id]
+        video_youtube_info = VideoInfo.new(video.url)
+        video.youtube_id = video_youtube_info.video_id
+        video.image_url = video_youtube_info.thumbnail_large
+      end
+      video.save
+    end
+  end
+
+  def video_info_nil_show
+    if @video.youtube_id.nil?
+      # pattern = /(?:https\:\/\/youtu\.be)\/(?<youtube_id>.+)/
+      # match_data = @video.url.match(pattern)
+      # @video.youtube_id = match_data[:youtube_id]
+      video_youtube_info = VideoInfo.new(@video.url)
+      @video.youtube_id = video_youtube_info.video_id
+      @video.save
+    end
   end
 
 end
