@@ -1,1 +1,1 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+This webapp is design to display super 8 videos colletion I scanned from my parents home archive. The colletion is stored on Youtube. Family members can see different sections of the videos.
