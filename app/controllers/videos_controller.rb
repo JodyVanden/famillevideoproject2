@@ -1,10 +1,11 @@
 class VideosController < ApplicationController
+  include UsersHelper
 
   def index
-    if current_user.family == "vanden"
+    if vanden?(current_user)
       @videos = Video.all
       video_info_nil_index(@videos)
-    elsif current_user.family == "marion"
+    elsif marion?(current_user)
       @videos = Video.where(is_public: true)
       video_info_nil_index(@videos)
     else @videos = []
@@ -13,10 +14,10 @@ class VideosController < ApplicationController
 
   def show
     #filter the users. If part of the Vanden family then all video are listed
-    if current_user.family == "vanden"
+    if vanden?(current_user)
       @video = Video.find(params[:id])
     #filter the users. If part of the marion famil then only pulbic video are listed
-    elsif current_user.family == "marion"
+    elsif marion?(current_user)
       @video = Video.find(params[:id])
       if @video.is_public?
       else redirect_to not_allowed_path
@@ -31,14 +32,14 @@ class VideosController < ApplicationController
 
   def new
     #create a new video. only allowed for admin user
-    if current_user.admin?
+    if admin?(current_user)
       @video = Video.new
     else redirect_to not_allowed_path
     end
   end
 
   def create
-    if current_user.admin?
+    if admin?(current_user)
 
       @video = Video.new(video_params)
 
@@ -55,14 +56,14 @@ class VideosController < ApplicationController
   end
 
   def edit
-    if current_user.admin?
+    if admin?(current_user)
       @video = Video.find(params[:id])
     else redirect_to not_allowed_path
     end
   end
 
   def update
-    if current_user.admin?
+    if admin?(current_user)
       @video = Video.find(params[:id])
       @video.update(video_params)
       redirect_to video_path
@@ -71,8 +72,8 @@ class VideosController < ApplicationController
   end
 
   def destroy
-    if current_user.admin?
-      @video = Video.find(params[:id]) unless current_user && current_user.admin?
+    if admin?(current_user)
+      @video = Video.find(params[:id])
       @video.destroy
       redirect_to videos_path
     else redirect_to not_allowed_path
