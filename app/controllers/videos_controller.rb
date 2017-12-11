@@ -1,56 +1,83 @@
 class VideosController < ApplicationController
+  include UsersHelper
 
   def index
-    if current_user.allow_non_public?
+    if vanden?(current_user)
       @videos = Video.all
-    else
+      video_info_nil_index(@videos)
+    elsif marion?(current_user)
       @videos = Video.where(is_public: true)
+      video_info_nil_index(@videos)
+    else @videos = []
     end
-    video_info_nil
   end
 
   def show
-    @video = Video.find(params[:id])
-    @comment = Comment.new()
-
-    if !@video.is_public? && current_user.allow_non_public?
+    #filter the users. If part of the Vanden family then all video are listed
+    if vanden?(current_user)
       @video = Video.find(params[:id])
-    elsif @video.is_public?
-    else redirect_to not_allowed_path
+    #filter the users. If part of the marion famil then only pulbic video are listed
+    elsif marion?(current_user)
+      @video = Video.find(params[:id])
+      if @video.is_public?
+      else redirect_to not_allowed_path
+      end
+    else @video = []
     end
-    video_info_nil_show
+    #create a new comment in case the video is displayed
+    @comment = Comment.new()
+    #Check if the video information are available. If not then user gem VideoInfo
+    # video_info_nil_show
   end
 
   def new
-    @video = Video.new
+    #create a new video. only allowed for admin user
+    if admin?(current_user)
+      @video = Video.new
+    else redirect_to not_allowed_path
+    end
   end
 
   def create
-    @video = Video.new(video_params)
-    video_youtube_info = VideoInfo.new(@video.url)
-    @video.youtube_id = video_youtube_info.video_id
+    if admin?(current_user)
 
-    @video.name = video_youtube_info.title
-    @video.description = video_youtube_info.description
-    @video.save
-    redirect_to video_path(@video)
+      @video = Video.new(video_params)
+
+      #get all information from youtube with the gem VideoInfo
+      video_youtube_info = VideoInfo.new(@video.url)
+      @video.youtube_id = video_youtube_info.video_id
+      @video.name = video_youtube_info.title
+      @video.description = video_youtube_info.description
+      @video.save
+
+      redirect_to video_path(@video)
+    else redirect_to not_allowed_path
+    end
   end
 
   def edit
-    @video = Video.find(params[:id])
+    if admin?(current_user)
+      @video = Video.find(params[:id])
+    else redirect_to not_allowed_path
+    end
   end
 
   def update
-    @video = Video.find(params[:id])
-    @video.update(video_params)
-    redirect_to video_path
+    if admin?(current_user)
+      @video = Video.find(params[:id])
+      @video.update(video_params)
+      redirect_to video_path
+    else redirect_to not_allowed_path
+    end
   end
 
   def destroy
-    @video = Video.find(params[:id])
-    @video.destroy
-
-    redirect_to videos_path
+    if admin?(current_user)
+      @video = Video.find(params[:id])
+      @video.destroy
+      redirect_to videos_path
+    else redirect_to not_allowed_path
+    end
   end
 
   private
@@ -59,8 +86,9 @@ class VideosController < ApplicationController
     params.require(:video).permit(:name, :url, :description, :is_public)
   end
 
-  def video_info_nil_index
-    @videos.each do |video|
+  def video_info_nil_index(videos)
+    # binding-pry
+    videos.each do |video|
       if video.youtube_id.nil?
          # pattern = /(?:https\:\/\/youtu\.be)\/(?<youtube_id>.+)/
         # match_data = @video.url.match(pattern)

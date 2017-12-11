@@ -22,7 +22,7 @@
     </div>
 
     <div class="admin auto-resizable-iframe">
-      <% if current_user.email == "jody.vanden@gmail.com" %>
+      <% if admin?(current_user) %>
       <%= link_to "edit", edit_video_path(@video) %>
       <%= link_to "delete", video_path(@video), method: :delete,
           data: { confirm: "Are you sure?" } %>
