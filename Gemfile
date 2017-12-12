@@ -15,6 +15,8 @@ gem 'carrierwave', '~> 0.11.2'
 gem 'rmagick'
 gem 'wgif'
 gem 'video_info', '~> 2.7'
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
